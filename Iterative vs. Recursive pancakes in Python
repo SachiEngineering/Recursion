@@ -1,0 +1,52 @@
+print("Cooking and eating pancakes iteratively vs recursively.\n\n")
+
+##############################
+####### Iterative Code #######
+##############################
+
+def iterative_pancakes_1():
+  print("Cooking iterative pancake #1")
+  iterative_pancakes_2()
+  print("Eating iterative pancake #1")
+
+def iterative_pancakes_2():
+  print("Cooking iterative pancake #2")
+  iterative_pancakes_3()
+  print("Eating iterative pancake #2")
+
+def iterative_pancakes_3():
+  print("Cooking iterative pancake #3")
+  iterative_pancakes_4()
+  print("Eating iterative pancake #3")
+
+def iterative_pancakes_4():
+  print("Cooking iterative pancake #4")
+  iterative_pancakes_5()
+  print("Eating iterative pancake #4")
+
+def iterative_pancakes_5():
+  print("Cooking iterative pancake #5")
+  print("No more iterative batter. Sitting down to eat.")
+  print("Eating iterative pancake #5")
+
+
+##############################
+####### Recursive Code #######
+##############################
+
+def recursive_pancakes(quantity):
+  if quantity > 5: # stopping condition, don't infinite loop
+    print("No more recursive batter. Sitting down to eat.")
+    return
+
+  print("Cooking recursive pancake #" + str(quantity))
+  recursive_pancakes(quantity+1) # self-invoking
+  print("Eating recursive pancake #" + str(quantity))
+  
+
+### Running code
+print("Cooking pancakes with iterative batter.\n")
+iterative_pancakes_1()
+print("\nNo more pancakes but plenty of syrup.\nCooking more with recursive batter.\n")
+recursive_pancakes(1)
+
