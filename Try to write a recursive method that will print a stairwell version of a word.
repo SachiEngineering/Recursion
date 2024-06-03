@@ -1,0 +1,32 @@
+def printStairwell(word, idx=0):
+  if idx > len(word):
+    return
+  
+  if idx > 0: # don't print empty string
+    print(word[0:idx])
+   
+  printStairwell(word, idx+1)
+
+
+print("Making a stairwell from the word stairwell:")
+printStairwell("stairwell")
+print("=======================================Done")
+
+
+'''
+In this implementation, the stack frame will look like this at it's peak:
+
+TOP OF STACK
+printStairwell("stairwell", 10) // base case, do nothing, start tearing down frames
+printStairwell("stairwell", 9)
+printStairwell("stairwell", 8)
+printStairwell("stairwell", 7)
+printStairwell("stairwell", 6)
+printStairwell("stairwell", 5)
+printStairwell("stairwell", 4)
+printStairwell("stairwell", 3)
+printStairwell("stairwell", 2)
+printStairwell("stairwell", 1)
+printStairwell("stairwell", 0)
+BOTTOM OF STACK
+'''
