@@ -1,0 +1,40 @@
+def iterativeFactorial(n):
+  result = 1
+  while n > 1:
+    result = result * n
+    n -= 1
+
+  return result
+  
+
+def recursiveFactorial(n):
+  if n <= 1: # base case
+    return 1
+  else: # recursive & merge case
+    return n * recursiveFactorial(n-1)
+
+
+def iterativeFibonacci(n):
+  fib = 0
+  prev = 1
+  for i in range(n):
+    realPrevious = prev
+    prev = fib
+    fib = realPrevious + fib
+
+  return fib
+
+
+def recursiveFibonacci(n):
+  if n <= 0: # base case
+    return 0
+  elif n == 1: # base case
+    return 1
+  else: # recursive & merge case
+    return recursiveFibonacci(n-1) + recursiveFibonacci(n-2)
+
+
+print("Iterative 7! = " + str(iterativeFactorial( 7 )))
+print("Recursive 7! = " + str(recursiveFactorial( 7 )))
+print("Iterative Fib(7) = " + str(iterativeFibonacci( 7 )))
+print("Recursive Fib(7) = " + str(recursiveFibonacci( 7 )))
