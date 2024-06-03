@@ -1,0 +1,44 @@
+def sumArrayBeginningSplit(arr):
+  if len(arr) == 1: # base case
+    return arr[0]
+
+  # recursive step
+  backSum = sumArrayBeginningSplit(arr[1:])
+  
+  # merge step
+  return arr[0] + backSum
+
+
+def sumArrayEndingSplit(arr):
+  if len(arr) == 1: # base case
+    return arr[0]
+  
+  # recursive step
+  frontSum = sumArrayEndingSplit(arr[:len(arr)-1])
+  
+  # merge step
+  return frontSum + arr[len(arr)-1]
+  
+
+def sumArrayMidpointSplit(arr):
+  if len(arr) == 1: # base case
+    return arr[0]
+
+  halfway = len(arr)//2
+  firstHalf = arr[:halfway]
+  secondHalf = arr[halfway:]
+
+  # recursive step
+  firstHalfSum = sumArrayMidpointSplit(firstHalf)
+  secondHalfSum = sumArrayMidpointSplit(secondHalf)
+
+  # merge step
+  return firstHalfSum + secondHalfSum
+
+
+arr = [5, 5, 5, 5, 10, 10, 10, 20, 20, 10] # sum = 100
+
+print(sumArrayBeginningSplit(arr))
+print(sumArrayEndingSplit(arr))
+print(sumArrayMidpointSplit(arr))
+
