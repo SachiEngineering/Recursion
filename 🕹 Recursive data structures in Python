@@ -1,0 +1,53 @@
+# a string is composed of any combination of smaller strings
+str = "2468"
+# 2 + 468
+# 24 + 68
+# 246 + 8
+# 2 + 4 + 68
+# 2 + 4 + 6 + 8
+
+
+# an array is composed of any combination of smaller arrays
+arr = [2,4,6,8]
+# [2] + [4,6,8]
+# [2,4] + [6,8]
+# [2,4,6] + [8]
+# [2] + [4] + [6,8]
+# [2] + [4] + [6] + [8]
+
+
+class LinkedListNode:
+  def __init__(self, val, next=None):
+    self.val = val
+    self.next = next
+
+# a linked list is composed of smaller linked lists
+# 2 -> 4 -> 6 -> 8
+head = LinkedListNode(2, LinkedListNode(4, LinkedListNode(6, LinkedListNode(8))))
+# 2 is a node pointing to a node starting with 4
+# 4 is a node pointing to a node starting with 6
+# 6 is a node pointing to a node starting with 8
+# 8 is a node pointing to an empty node
+
+
+class BinaryTreeNode:
+  def __init__(self, val, left=None, right=None):
+    self.val = val
+    self.left = left
+    self.right = right
+
+# a tree is composed of smaller trees
+#    2
+#  4  6
+#      8
+root = BinaryTreeNode(2)
+left = BinaryTreeNode(4)
+right = BinaryTreeNode(6)
+root.left = left
+root.right = right
+right.right = BinaryTreeNode(8)
+# 2 is a tree with a left tree starting with 4 and a right tree starting with 6
+# 4 is a tree with no other trees
+# 6 is a tree with no left tree and a right tree starting with 8
+# 8 is a tree with no other trees
+
