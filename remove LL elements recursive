@@ -1,0 +1,38 @@
+class ListNode(object):
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class Solution(object):
+    def removeElements(self, head, val):
+        """
+        :type head: ListNode
+        :type val: int
+        :rtype: ListNode
+        """
+        if head is None:
+            return None
+        
+        # Recursively call removeElements on the next node
+        head.next = self.removeElements(head.next, val)
+        
+        # If the current node needs to be removed, return the next node
+        if head.val == val:
+            return head.next 
+        else:
+            return head
+
+#########################################       
+# Verify
+def print_linked_list(head):
+    curr = head
+    while curr:
+        print(curr.val, end=' ')
+        curr = curr.next
+    print()
+
+twice6 = ListNode(1, ListNode(2, ListNode(6, ListNode(3, ListNode(4, ListNode(4, ListNode(5, ListNode(6))))))))
+sol = Solution()
+result = sol.removeElements(twice6, 6)
+print_linked_list(result)  # Expected output: 1 2 3 4 4 5
+
