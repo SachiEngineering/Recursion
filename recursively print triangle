@@ -1,0 +1,48 @@
+'''
+Recursively Print Triangle
+
+Use recursion to print an upside-down triangle of *X*s with a starting length k and tapering by 2 on subsequent levels. There should be the correct amount of leading spaces on each level. You can assume k will always be odd and positive.
+
+Follow-up: Instead of being given an integer k, you're given an array of characters of odd length and must follow the same pattern of printing the triangle while using the array contents.  There should be the correct amount of leading spaces on each level. You can assume the array will always be odd and not None.
+ 
+
+EXAMPLE(S)
+printXTriangle(5)
+XXXXX
+ XXX
+  X
+
+printTriangle([a,b,c,d,e])
+abcde
+ bcd
+  c
+ 
+
+FUNCTION SIGNATURE
+def printXTriangle(k: int) -> None:
+def printTriangle(array: list[str]) -> None:
+'''
+
+def printXTriangle(k: int, space = 0) -> None:
+  # base case
+  if k > 0:
+    print(" " * space + "X" * k)
+    return printXTriangle(k - 2, space + 1)
+
+printXTriangle(7); print("====")
+printXTriangle(5); print("====")
+printXTriangle(3); print("====")
+printXTriangle(1); print("====")
+
+###########################################################
+
+def printTriangle(array,space=0) -> None:
+    k = len(array)
+    if k > 0:
+        print(" " * space + "".join(array)) #add space and combine array into one string
+        
+        printTriangle(array[1:-1], space + 1) #exclude first and last elements, and one space to space
+
+printTriangle(['t','a','c','o','c','a','t']); print("====")
+printTriangle(['a','b','c','d','e']); print("====")
+printTriangle(['X']); print("====")
