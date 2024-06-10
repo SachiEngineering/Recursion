@@ -1,0 +1,31 @@
+#Given a linked list of positive integers, count the elements with odd values from the list using a recursive approach.
+
+#Note that 0 is an even number.
+class ListNode(object):
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+def print_linked_list(head):
+    curr = head
+    while curr:
+        print(curr.val, end=' ')
+        curr = curr.next
+    print()
+
+##Implement
+def countOdd(head):
+  if head is None:
+    return 0
+
+  #coutn gets called on the next node
+  count = countOdd(head.next)
+
+  #if current node is odd, add one to the count.
+  if head.val %2 ==1:
+    count +=1
+  return count
+
+
+##Verify
+twice6 = ListNode(1, ListNode(2, ListNode(6, ListNode(3, ListNode(4, ListNode(4, ListNode(5, ListNode(6))))))))
+print(countOdd(twice6))
