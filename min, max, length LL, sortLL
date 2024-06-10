@@ -1,0 +1,87 @@
+def fibonacci(n):
+  #base case
+  if n == 0:
+    return 0
+  elif n == 1:
+    return 1
+
+  #simplest thing to do in this iteration
+  else:
+    return fibonacci(n-2)+fibonacci(n-1)
+
+#verify
+print(fibonacci(15))
+
+#############################
+#length of LL
+
+class Node:
+  def __init__(self, value=None, next=None):
+    self.value = value # alternative names: data or value
+    self.next = next
+
+def printLL(head):
+  curr = head
+  while curr:
+    print(curr.value,end="->")
+    curr = curr.next
+  print("None")
+
+def get_length(head):
+  if not head:
+    return 0
+
+  else:
+    return 1+get_length(head.next)
+
+#verify
+trial = Node(1,Node(2,Node(3)))
+print(get_length(trial))
+
+
+############################
+
+#max value in LL
+
+def getMax(head):
+
+  if not head:
+    return float('-inf')
+  
+  #smallest iterationm
+  # else:
+  #   while head:
+  #     if head.val > getMax(head)
+
+  else:
+    #return the max between the current head and the function on the next node
+
+    return max(head.value, getMax(head.next))
+
+print(getMax(trial))
+
+#############################
+#min value in LL
+def getMin(head):
+
+  if not head:
+    return float('inf')
+
+  else:
+    return min(head.value, getMin(head.next))
+
+print(getMin(trial))
+
+#############################
+#sorted in sertion into a LL
+
+def sortLL(head, newValue):
+  #base case - insert in the front
+  if not head or newValue < head.value:
+    return Node(newValue,head)
+    
+  else:
+    head.next = sortLL(head.next,newValue)
+    return head
+
+printLL(sortLL(trial,2.5))
